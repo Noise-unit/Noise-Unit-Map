@@ -176,19 +176,23 @@ function normalizeRow(row) {
 
   const yearSet = new Set();
   const rawYear = row["Year"];
+  let yearValue = null;
+
   if (rawYear && /^\d{4}$/.test(String(rawYear).trim())) {
-    yearSet.add(parseInt(String(rawYear).trim(), 10));
+    yearValue = parseInt(String(rawYear).trim(), 10);
+    yearSet.add(yearValue);
   }
-  allDates.forEach(d => yearSet.add(d.getFullYear()));
-  const years = Array.from(yearSet).filter(y => Number.isInteger(y));
+
+  // `years` is kept for compatibility, but is now only based on the Year column
+  const years = Array.from(yearSet);
 
   return {
     lat, lng,
     easting, northing,
 
     reference: row["Reference No."],
-    year: row["Year"],
-    years, 
+    year: yearValue,      // numeric year from the "Year" column
+    years,                // array containing that same year (or empty if missing)
     applicant: row["Applicant"],
     eventLocation: row["Event Location"],
     description: row["Event Description"],
@@ -700,10 +704,28 @@ function closeFullDetailsModal() {
 
 function hookRefSearchButtons(allFeats) {
   const runBtn = document.getElementById("run-ref-search");
-  runBtn.addEventListener("click", () => runReferenceSearch(allFeats));
-
   const openBtn = document.getElementById("open-ref-details");
-  openBtn.addEventListener("click", () => openFullDetailsModal());
+  const refInput = document.getElementById("ref-search-input");
+
+  // Click on "Run Related Search" button
+  if (runBtn) {
+    runBtn.addEventListener("click", () => runReferenceSearch(allFeats));
+  }
+
+  // Click on "Open Full Details" button
+  if (openBtn) {
+    openBtn.addEventListener("click", () => openFullDetailsModal());
+  }
+
+  // Press Enter while typing in the Reference No. box
+  if (refInput) {
+    refInput.addEventListener("keydown", (e) => {
+      if (e.key === "Enter") {
+        e.preventDefault();          // don't submit / beep
+        runReferenceSearch(allFeats);
+      }
+    });
+  }
 }
 
 async function initDataPipeline() {
