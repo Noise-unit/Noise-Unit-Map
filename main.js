@@ -3,7 +3,7 @@ const map = L.map('map', {
   zoomControl: true,
 });
 
-// === Basemaps (Esristreet and Google [openstreetmap was considered but ran into some render issues that I didn't want to spend extra time sorting out- too lazy XD) ===
+// === Basemaps (Esristreet and Google [openstreetmap was considered but ran into some render issues that I didn't want to spend extra time sorting out) ===
 const esriStreets = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}', {
   maxZoom: 18, //above this number causes render issues with the esristreet
   attribution: 'Tiles &copy; Esri — Source: Esri, HERE, Garmin, FAO, NOAA, USGS, © OpenStreetMap contributors, and the GIS User Community'
