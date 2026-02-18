@@ -82,9 +82,7 @@ const BaseSwitcher = L.Control.extend({
 });
 
 const SHEET_URLS = [
-  "https://docs.google.com/spreadsheets/d/e/2PACX-1vSBI-NgdiQKH_HxbEl9ej74hF79sXYflXnSmgi2E9vR27v06cC2WjPqv_Ofkm9Faj9KeqGLM_eijfik/pub?output=csv",
-  "https://docs.google.com/spreadsheets/d/e/2PACX-1vS1PgZnGD-BtF4dIkKCc3fWxGSYWzl8I9OrOJoMdDwJaUI9gdXrdTUON2f357oiKF4NGAOIo-bsiIK0/pub?output=csv",
-  "https://docs.google.com/spreadsheets/d/e/2PACX-1vR5srTByQSZu7tQIhE04ZqH-EAK7PC-ZmIj6GhBscK6zFZbyrpjlnGbijXONBubkmjFLKfhocdJc8Bc/pub?output=csv"
+  "https://docs.google.com/spreadsheets/d/e/2PACX-1vSBI-NgdiQKH_HxbEl9ej74hF79sXYflXnSmgi2E9vR27v06cC2WjPqv_Ofkm9Faj9KeqGLM_eijfik/pub?output=csv"
 ];
 
 const EPSG32620 =
