@@ -903,7 +903,7 @@ const insetMap = L.map('insetMap', {
 
 // Inset map basemap (greymap similar to Esri grey maps)
 const insetTiles = L.tileLayer(
-  'https://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}{r}.png',
+  "https://a.tile.opentopomap.org/{z}/{x}/{y}.png",
   { subdomains: 'abcd', maxZoom: 19 }
 ).addTo(insetMap);
 
